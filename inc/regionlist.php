@@ -11,12 +11,12 @@ else {$orderby = "RAND()";}
 ?>
 
 <div class="panel panel-default <?php echo $class; ?>">
-	<div class="panel-heading ">
-		<h3 class='panel-title'>
-			<i class="glyphicon glyphicon-th-large pull-right"></i>
-			<strong>Region list</strong>
-		</h3>
-	</div>
+    <div class="panel-heading ">
+        <h3 class='panel-title'>
+            <i class="glyphicon glyphicon-th-large pull-right"></i>
+            <strong>Region list</strong>
+        </h3>
+    </div>
 
     <table class="table table-strided">
         <tr>
