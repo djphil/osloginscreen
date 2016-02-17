@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/opensimwi/!svn/ver/58/trunk/settings
+END
+uploadconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/opensimwi/!svn/ver/6/trunk/settings/uploadconfig.php
+END
+config.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/opensimwi/!svn/ver/58/trunk/settings/config.php
+END
+mysql.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/opensimwi/!svn/ver/6/trunk/settings/mysql.php
+END

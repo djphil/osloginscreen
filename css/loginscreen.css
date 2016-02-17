@@ -1,0 +1,43 @@
+/* CSS v0.1 by djphil (CC-BY-NC-SA 4.0) */
+
+@CHARSET "UTF-8";
+* {margin: 0px; padding: 0px;}
+html, body {height: 100%; width: 100%; overflow-y:hidden;}
+
+img#bgimage {
+	left: 0px; 
+	width: 100%; 
+	position: fixed; 
+	height: 100%;
+    z-index:-1;
+}
+
+div#topleft 
+{
+	position: absolute;
+	top: 40px;
+	left: 20px;
+	z-index: 10;
+}
+
+div#topright 
+{
+	position: absolute;
+	top: 40px;
+	right: 20px;
+	z-index: 20;
+}
+
+.gridstatus, 
+.regionlist,
+.flashinfo,
+.logo
+{
+	min-width: 300px;
+	max-width: 300px;
+}
+
+img.logo 
+{
+	text-align: center;
+}
