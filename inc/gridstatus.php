@@ -92,23 +92,23 @@ $assetscounter = $sql->rowCount();
 ?>
 
 <div class="panel panel-default <?php echo $class; ?>">
-	<div class="panel-heading ">
-		<h3 class='panel-title'>
-			<i class="glyphicon glyphicon-stats"></i>
-			<strong>Grid Status</strong>
+    <div class="panel-heading ">
+        <h3 class='panel-title'>
+            <i class="glyphicon glyphicon-stats"></i>
+            <strong>Grid Status</strong>
             <?php
-                if ($online == TRUE)
-                {
-                    echo "<span class='label label-default label-success pull-right'>";
-                    echo "<strong>ONLINE <i class='glyphicon glyphicon-ok'></i></strong>";
-                    echo "</span>";
-                }
-                else
-                {
-                    echo "<span class='label label-default label-danger pull-right'>";
-                    echo "<strong>OFFLINE <i class='glyphicon glyphicon-remove'></i></strong>";
-                    echo "</span>";
-                }
+            if ($online == TRUE)
+            {
+                echo "<span class='label label-default label-success pull-right'>";
+                echo "<strong>ONLINE <i class='glyphicon glyphicon-ok'></i></strong>";
+                echo "</span>";
+            }
+            else
+            {
+                echo "<span class='label label-default label-danger pull-right'>";
+                echo "<strong>OFFLINE <i class='glyphicon glyphicon-remove'></i></strong>";
+                echo "</span>";
+            }
             ?>
 		</h3>
 	</div>
