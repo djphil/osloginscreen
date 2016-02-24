@@ -46,11 +46,7 @@ else {$orderby = "RAND()";}
             $locY = $row->locY/256;
 
             echo '<tr>';
-            echo '<td>';
-            echo '<a href="secondlife://'.$regionName.'/128/128/25">';
-            echo $regionName;
-            echo '</a>';
-            echo '</td>';
+            echo '<td><a href="secondlife://'.$regionName.'/128/128/25">'.$regionName.'</a></td>';
             echo '<td><span class="badge badge-default badge-success pull-right">'.$locX.'</span></td>';
             echo '<td><span class="badge badge-default badge-danger pull-right">'.$locY.'</span></td>';
             echo '</tr>';
