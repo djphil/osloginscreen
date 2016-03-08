@@ -1,8 +1,9 @@
 <?php
 // Online / Offline with socket
-if ($socket = fsockopen($robustIP, $robustPORT, $errno, $errstr, 1)) {$online = TRUE;}
-else{$online = FALSE;}
-fclose($socket);
+$socket = @fsockopen($robustIP, $robustPORT, $errno, $errstr, 1);
+if (is_resource($socket)) {$online = TRUE;}
+else {$online = FALSE;}
+@fclose($socket);
 
 // Users count
 $sql = $db->prepare("
