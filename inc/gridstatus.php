@@ -5,91 +5,129 @@ if (is_resource($socket)) {$online = TRUE;}
 else {$online = FALSE;}
 @fclose($socket);
 
+// OLD CODE
+// if ($socket = fsockopen($robustIP, $robustPORT, $errno, $errstr, 1)) {$online = TRUE;}
+// else {$online = FALSE;}
+// fclose($socket);
+
 // Users count
-$sql = $db->prepare("
+$userscounter = $db->prepare("
     SELECT PrincipalID
-    FROM useraccounts 
+    FROM ".$tb_useraccount." 
 ");
-$sql->execute();
-$userscounter = $sql->rowCount();
+$userscounter->execute();
+$userscounter = $userscounter->rowCount();
 
 // Regions count
-$sql = $db->prepare("
+$landscounter = $db->prepare("
     SELECT UUID
-    FROM land 
+    FROM ".$tb_land." 
 ");
-$sql->execute();
-$landscounter = $sql->rowCount();
+$landscounter->execute();
+$landscounter = $landscounter->rowCount();
 
 // Regions Online count
-$sql = $db->prepare("
+$regionscounter = $db->prepare("
     SELECT uuid
-    FROM regions 
+    FROM ".$tb_regions." 
 ");
-$sql->execute();
-$regionscounter = $sql->rowCount();
+$regionscounter->execute();
+$regionscounter = $regionscounter->rowCount();
+
+// Single regions count
+$singleregioncounter = $db->prepare("
+    SELECT uuid
+    FROM ".$tb_regions." 
+    WHERE sizeX = 256
+    AND sizeY = 256
+");
+$singleregioncounter->execute();
+$singleregioncounter = $singleregioncounter->rowCount();
+
+// Var regions count
+$varregioncounter = $db->prepare("
+    SELECT uuid
+    FROM ".$tb_regions." 
+    WHERE sizeX <> 256
+    AND sizeY <> 256
+");
+$varregioncounter->execute();
+$varregioncounter = $varregioncounter->rowCount();
+
+// Total Area
+$totalarea = $db->prepare("
+    SELECT SUM(Area) AS totalarea
+    FROM ".$tb_land." 
+");
+$totalarea->execute();
+$totalarea = $totalarea->fetch(PDO::FETCH_ASSOC);
+$totalarea = $totalarea['totalarea']/1000;
 
 // Unique Visitor Last 24h
 $now = time() - 86400;
-$sql = $db->prepare("
+$lastdayscounter = $db->prepare("
     SELECT UserID
-    FROM griduser 
+    FROM ".$tb_griduser." 
     WHERE Login > ".$now."
 ");
-$sql->execute();
-$lastdayscounter = $sql->rowCount();
+$lastdayscounter->execute();
+$lastdayscounter = $lastdayscounter->rowCount();
 
 // Unique Visitor Last 30 Days
 $now = time() - 2419200;
-$sql = $db->prepare("
+$lastmonthscounter = $db->prepare("
     SELECT UserID
-    FROM griduser 
+    FROM ".$tb_griduser." 
     WHERE Login > ".$now."
 ");
-$sql->execute();
-$lastmonthscounter = $sql->rowCount();
+$lastmonthscounter->execute();
+$lastmonthscounter = $lastmonthscounter->rowCount();
 
 // Online now count
-$sql = $db->prepare("
+$nowonlinescounter = $db->prepare("
     SELECT UserID
-    FROM presence 
+    FROM ".$tb_presence." 
 ");
-$sql->execute();
-$nowonlinescounter = $sql->rowCount();
+$nowonlinescounter->execute();
+$nowonlinescounter = $nowonlinescounter->rowCount();
 
 // HG User count
-$zero_uuid = "00000000-0000-0000-0000-000000000000";
-$sql = $db->prepare("
-    SELECT RegionID
-    FROM presence 
-    WHERE RegionID = ".$zero_uuid."
+$hguserscounter = $db->prepare("
+    SELECT UserID, Online
+    FROM ".$tb_griduser." 
+    WHERE UserID LIKE '%http%'
+    AND Online LIKE 'TRUE'
 ");
-$sql->execute();
-$hguserscounter = $sql->rowCount();
+$hguserscounter->execute();
+$hguserscounter = $hguserscounter->rowCount();
 
-// Objects count
-$sql = $db->prepare("
-    SELECT objectuuid
-    FROM objects 
-");
-$sql->execute();
-$objectscounter = $sql->rowCount();
+if ($displayassetsinfo === TRUE)
+{
+    // Objects count
+    $objectscounter = $db->prepare("
+        SELECT ".$fd_objectuuid."
+        FROM ".$tb_objects." 
+    ");
+    $objectscounter->execute();
+    $objectscounter = $objectscounter->rowCount();
 
-// Prims count
-$sql = $db->prepare("
-    SELECT UUID
-    FROM prims 
-");
-$sql->execute();
-$primscounter = $sql->rowCount();
+    // Prims count
+    $primscounter = $db->prepare("
+        SELECT UUID
+        FROM ".$tb_prims ." 
+    ");
+    $primscounter->execute();
+    $primscounter = $primscounter->rowCount();
 
-// Assets count
-$sql = $db->prepare("
-    SELECT id
-    FROM assets 
-");
-$sql->execute();
-$assetscounter = $sql->rowCount();
+    // Assets count
+    $assetscounter = $db->prepare("
+        SELECT id
+        FROM ".$tb_assets." 
+    ");
+    $assetscounter->execute();
+    $assetscounter = $assetscounter->rowCount();
+}
+$db = null;
 ?>
 
 <div class="panel panel-default <?php echo $class; ?>">
@@ -98,15 +136,15 @@ $assetscounter = $sql->rowCount();
             <i class="glyphicon glyphicon-stats"></i>
             <strong>Grid Status</strong>
             <?php
-            if ($online == TRUE)
+            if ($online === TRUE)
             {
-                echo "<span class='label label-default label-success pull-right'>";
+                echo "<span class='label label-success pull-right'>";
                 echo "<strong>ONLINE <i class='glyphicon glyphicon-ok'></i></strong>";
                 echo "</span>";
             }
             else
             {
-                echo "<span class='label label-default label-danger pull-right'>";
+                echo "<span class='label label-danger pull-right'>";
                 echo "<strong>OFFLINE <i class='glyphicon glyphicon-remove'></i></strong>";
                 echo "</span>";
             }
@@ -122,7 +160,18 @@ $assetscounter = $sql->rowCount();
             Total Regions<span class="badge"><?php echo $landscounter; ?></span>
         </li>
         <li class="list-group-item list-group-item-default">
-            Regions Onlines<span class="badge"><?php echo $regionscounter ?></span>
+            Regions Online<span class="badge"><?php echo $regionscounter; ?></span>
+        </li>
+        <?php if ($regionscounter > 0): ?>
+        <li class="list-group-item list-group-item-default">
+            Single Regions<span class="badge"><?php echo $singleregioncounter; ?></span>
+        </li>
+        <li class="list-group-item list-group-item-default">
+            Var Regions<span class="badge"><?php echo $varregioncounter; ?></span>
+        </li>
+        <?php endif; ?>
+        <li class="list-group-item list-group-item-default">
+            Total Area (km²)<span class="badge"><?php echo $totalarea; ?></span>
         </li>
         <li class="list-group-item list-group-item-default">
             Unique Visitors (30 days)<span class="badge"><?php echo $lastmonthscounter; ?></span>
@@ -131,11 +180,16 @@ $assetscounter = $sql->rowCount();
             Unique Visitors (24 hours)<span class="badge"><?php echo $lastdayscounter; ?></span>
         </li>
         <li class="list-group-item list-group-item-default">
-            User Online Now<span class="badge"><?php echo $nowonlinescounter; ?></span>
+            Total Users Online<span class="badge"><?php echo $nowonlinescounter; ?></span>
         </li>
         <li class="list-group-item list-group-item-default">
-            HG User Online Now<span class="badge"><?php echo $hguserscounter; ?></span>
+            Local Users Online<span class="badge"><?php echo ($nowonlinescounter - $hguserscounter) ; ?></span>
         </li>
+        <li class="list-group-item list-group-item-default">
+            HyperGrid User Online<span class="badge"><?php echo $hguserscounter; ?></span>
+        </li>
+
+        <?php if ($displayassetsinfo === TRUE): ?>
         <li class="list-group-item list-group-item-default">
             Total Objects<span class="badge"><?php echo $objectscounter; ?></span>
         </li>
@@ -144,6 +198,10 @@ $assetscounter = $sql->rowCount();
         </li>
         <li class="list-group-item list-group-item-default">
             Total Assets<span class="badge"><?php echo $assetscounter; ?></span>
-        </li>        
+        </li>
+        <?php endif; ?>        
     </div>
+    <?php if ($displaypanelfooter === TRUE): ?>
+        <div class="panel-footer"></div>
+    <?php endif; ?>
 </div>

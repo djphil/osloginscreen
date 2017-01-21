@@ -28,7 +28,8 @@ else {$orderby = "RAND()";}
         <?php
         $sql = $db->prepare("
             SELECT regionName, locX, locY
-            FROM regions 
+            FROM ".$tb_regions." 
+            WHERE regionName NOT LIKE 'http%'
             ORDER BY ".$orderby."
         ");
 
@@ -39,7 +40,7 @@ else {$orderby = "RAND()";}
         while($row = $sql->fetch(PDO::FETCH_OBJ)) 
         {
             ++$i;
-            if ($i > $regionMAX) break;
+            if ($i > $region_max) break;
 
             $regionName = $row->regionName;
             $locX = $row->locX/256;
@@ -51,6 +52,7 @@ else {$orderby = "RAND()";}
             echo '<td><span class="badge badge-default badge-danger pull-right">'.$locY.'</span></td>';
             echo '</tr>';
         }
+        $sql = null;
         ?>
     </table>
 </div>

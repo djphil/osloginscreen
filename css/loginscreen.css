@@ -1,43 +1,59 @@
-/* CSS v0.1 by djphil (CC-BY-NC-SA 4.0) */
+/* CSS v0.2 by djphil (CC-BY-NC-SA 4.0) */
 
 @CHARSET "UTF-8";
 * {margin: 0px; padding: 0px;}
-html, body {height: 100%; width: 100%; overflow-y:hidden;}
+html, body {height: 100%; width: 100%;}
 
-img#bgimage {
-	left: 0px; 
-	width: 100%; 
-	position: fixed; 
-	height: 100%;
-    z-index:-1;
+.title, .subtitle {
+    min-height: 35px;
+	color: #FFFFFF;
+	text-align: center;
+	text-shadow: 0 1px 2px rgba(0,0,0, 0.8);
 }
 
-div#topleft 
-{
-	position: absolute;
-	top: 40px;
-	left: 20px;
-	z-index: 10;
-}
-
-div#topright 
-{
-	position: absolute;
-	top: 40px;
-	right: 20px;
-	z-index: 20;
-}
-
+.informations,
 .gridstatus, 
 .regionlist,
 .flashinfo,
+.eventlist,
+.userlist,
 .logo
 {
-	min-width: 300px;
-	max-width: 300px;
+    z-index: 0;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    padding: 5px;
+}
+
+.header {
+    position: absolute;
+    top: 0px;
+    height: 30px;
+    background:rgba(0, 0, 0, 0.8);
+    filter: alpha(opacity = 0.8);
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+    width: 100%;
+    padding: 5px;
+}
+table.table-nobottom {
+    margin-bottom: 0px !important;
+}
+
+img#bgimage {
+    left: 0px;
+    width: 100%; 
+    position: fixed;
+    height: 100%;
+    z-index:-2;
 }
 
 img.logo 
 {
-	text-align: center;
+    text-align: center;
 }
