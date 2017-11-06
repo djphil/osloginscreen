@@ -21,8 +21,8 @@ else {$orderby = "RAND()";}
     <table class="table table-strided">
         <tr>
             <th><a href="?orderby=region"><span class='label label-primary'>Region(s):</span></a></th>
-            <th><a class="pull-right" href="?orderby=x"><span class='label label-success'>Loc X:</span></a></th>
-            <th><a class="pull-right" href="?orderby=y"><span class='label label-danger'>Loc Y:</span></a></th>
+            <th><a class="pull-right" href="?orderby=x"><span class='label label-danger'>Loc X:</span></a></th>
+            <th><a class="pull-right" href="?orderby=y"><span class='label label-success'>Loc Y:</span></a></th>
         </tr>
 
         <?php
