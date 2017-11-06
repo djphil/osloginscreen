@@ -21,7 +21,14 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body class="full fader">
+
+<div id="matrix"></div>
+
+<span id="fader">
+    <style>.fader {background-image: url('<?php echo getRandomImage(); ?>');}</style>
+</span>
+
 <?php if ($displayribbon === TRUE): ?>
 <div class="github-fork-ribbon-wrapper left">
     <div class="github-fork-ribbon">
@@ -31,9 +38,6 @@
 <?php endif; ?>
 
 <div class="container-fluid">
-    <div id="bgimage" class="">
-        <img id="bgimage" src="<?php echo getRandomImage(); ?>" />
-    </div>
     <div class="row">
         <div class="title">
             <?php if ($displaytitle === TRUE): ?>
@@ -63,16 +67,7 @@
 </div>
 
 <!-- RELOADER -->
-<script>
-$(document).ready(function() {
-    setInterval(function() {
-        $('#bgimage').load(document.URL +  ' #bgimage');
-        $('#bgimage').hide();
-        $('#bgimage').fadeIn('slow');   
-        
-    }, <?php echo $refresh; ?>);
-});
-</script>
+<script>setInterval(function() {$("#fader").load(location.href + " #fader");}, <?php echo $refresh; ?>);</script>
 
 </body>
 </html>

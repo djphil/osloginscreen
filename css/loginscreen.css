@@ -1,4 +1,4 @@
-/* CSS v0.2 by djphil (CC-BY-NC-SA 4.0) */
+/* CSS v0.1 by djphil (CC-BY-NC-SA 4.0) */
 
 @CHARSET "UTF-8";
 * {margin: 0px; padding: 0px;}
@@ -56,4 +56,23 @@ img#bgimage {
 img.logo 
 {
     text-align: center;
+}
+
+/* FX */
+.full {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center; 
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+}
+
+.fader {
+    -webkit-transition: background 1s linear;
+       -moz-transition: background 1s linear;
+        -ms-transition: background 1s linear;
+         -o-transition: background 1s linear;
+            transition: background 1s linear;
 }
