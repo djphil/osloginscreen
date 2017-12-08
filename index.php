@@ -23,7 +23,9 @@
 
 <body class="full fader">
 
-<div id="matrix"></div>
+<?php if ($displaymatrix === TRUE): ?>
+    <div id="matrix"></div>
+<?php endif; ?>
 
 <span id="fader">
     <style>.fader {background-image: url('<?php echo getRandomImage(); ?>');}</style>

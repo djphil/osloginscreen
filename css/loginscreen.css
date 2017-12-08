@@ -58,6 +58,16 @@ img.logo
     text-align: center;
 }
 
+/* MATRIX */
+#matrix {
+    background: url("../img/matrix.png");
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: -1
+}
+
 /* FX */
 .full {
     background-repeat: no-repeat;

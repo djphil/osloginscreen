@@ -36,6 +36,7 @@ $transparency = 0.0;
 $displayassetsinfo  = TRUE;
 $displayflashinfo   = TRUE;
 $displayribbon      = TRUE;
+$displaymatrix      = TRUE;
 $displaytitle       = TRUE;
 $displaypanelfooter = TRUE;
 
