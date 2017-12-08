@@ -11,11 +11,11 @@
     <title><?php echo $title; ?></title>
     <link rel="icon" href="./img/favicon.ico" />
     <link rel="author" href="./inc/humans.txt" />
-	<link rel="stylesheet" href="./css/loginscreen.css">
-    <?php if ($displayribbon === TRUE) {echo '<link rel="stylesheet" href="./css/gh-fork-ribbon.min.css" />';} ?>
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/<?php echo $style; ?>.css">
     <link href="./css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./css/loginscreen.css">
+    <?php if ($displayribbon === TRUE) {echo '<link rel="stylesheet" href="./css/gh-fork-ribbon.min.css" />';} ?>
     <?php if ($transparency > 0) {include_once("css/css.php");} ?>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
