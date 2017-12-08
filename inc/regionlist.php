@@ -55,4 +55,8 @@ else {$orderby = "RAND()";}
         $sql = null;
         ?>
     </table>
+
+    <?php if ($displaypanelfooter === TRUE): ?>
+        <div class="panel-footer"></div>
+    <?php endif; ?>
 </div>
