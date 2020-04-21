@@ -7,6 +7,6 @@
     </div>
     <div class='panel-body'><?php echo $flashinfo; ?></div>
     <?php if ($displaypanelfooter === TRUE): ?>
-        <div class="panel-footer"></div>
+    <div class="panel-footer"></div>
     <?php endif; ?>
 </div>

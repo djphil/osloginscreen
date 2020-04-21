@@ -1,0 +1,51 @@
+/*NEWSTICKER*/
+
+.glyphicon {margin-right:4px !important; /*override*/ }
+.pagination .glyphicon {margin-right:0px !important; /*override*/ }
+
+.pagination a
+{
+
+    font-size: 10px;
+}
+
+.panel ul
+{
+    padding:0px;
+    margin:0px;
+    list-style:none;
+}
+
+.news-item
+{
+    padding:4px 4px;
+    margin:0px;
+/*
+    border-top: 1px solid rgba(255, 255, 255, 0.3); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
+*/
+}
+
+/*.news-item a {color: rgba(0, 0, 0, 0.5);}*/
+.pagination ul {;}
+.pagination>li>a,
+.pagination>li>span {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.pagination>li.active>a {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #eee;
+}
+
+.pagination > li > a,
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    z-index: 3;
+    color: #eee;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    opacity: 0.3;
+}

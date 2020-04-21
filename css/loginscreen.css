@@ -1,10 +1,44 @@
 /* CSS v0.3 by djphil (CC-BY-NC-SA 4.0) */
 
-@CHARSET "UTF-8";
 * {margin: 0px; padding: 0px;}
 html, body {height: 100%; width: 100%;}
 
-.title, .subtitle {
+body
+{
+    /*color: #fff;*/
+    background: linear-gradient(270deg, #272b30, #3e444c, #272b30);
+    background-size: 600% 600%;
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    -o-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.no-margin {margin: 0px !important;}
+.no-padding {padding: 0px !important;}
+
+.title, .subtitle, .copyright {
     min-height: 35px;
 	color: #FFFFFF;
 	text-align: center;
@@ -12,6 +46,8 @@ html, body {height: 100%; width: 100%;}
 }
 
 .informations,
+.registernow,
+.newsticker,
 .gridstatus, 
 .regionlist,
 .flashinfo,
@@ -20,14 +56,6 @@ html, body {height: 100%; width: 100%;}
 .logo
 {
     z-index: 0;
-}
-
-.footer {
-    position: absolute;
-    bottom: 0px;
-    height: 30px;
-    width: 100%;
-    padding: 5px;
 }
 
 .header {
@@ -41,6 +69,24 @@ html, body {height: 100%; width: 100%;}
     width: 100%;
     padding: 5px;
 }
+
+.footer {
+    position: absolute;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    padding: 5px;
+    z-index: -1;
+}
+
+.bottom {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+}
+
 table.table-nobottom {
     margin-bottom: 0px !important;
 }
@@ -86,3 +132,35 @@ img.logo
          -o-transition: background 1s linear;
             transition: background 1s linear;
 }
+
+/* SCROLLBAR */
+.scroolbar {max-height: 350px; overflow-y: auto;}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #2e3338;
+}
+
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+    /*background-color: #3e444c;*/
+    background-color: #3e444c;
+}
+
+/*
+::-webkit-scrollbar-thumb:hover
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.7);
+    background-color: #525b65;
+}
+*/
+
+/* CAROUSEL */
+.carousel-inner .active.left {left: -25%;}
+.carousel-inner .next {left:  25%;}
+.carousel-inner .prev {left: -25%;}
+.carousel-control {width:  4%;}
+.carousel-control.left {margin-left:15px; background-image:none;}
+.carousel-control.right {margin-left:15px; background-image:none;}
