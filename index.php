@@ -68,7 +68,7 @@
         </div>
         <div class="col-sm-4">
             <div class="flashinfo">
-                <?php if ($displayflashinfo) {include_once("./inc/assetstats.php");} ?>
+                <?php if ($displayflashinfo) {include_once("./inc/flashinfo.php");} ?>
             </div>
             <div class="newsticker">
                 <?php if ($displaynewsticker) {include_once("./inc/newsticker.php");} ?>
