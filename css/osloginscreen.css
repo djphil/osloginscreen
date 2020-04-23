@@ -96,7 +96,7 @@ img#bgimage {
     width: 100%; 
     position: fixed;
     height: 100%;
-    z-index:-2;
+    z-index: -2;
 }
 
 img.logo 
@@ -158,9 +158,19 @@ img.logo
 */
 
 /* CAROUSEL */
+/* 4 by 4
 .carousel-inner .active.left {left: -25%;}
 .carousel-inner .next {left:  25%;}
 .carousel-inner .prev {left: -25%;}
 .carousel-control {width:  4%;}
 .carousel-control.left {margin-left:15px; background-image:none;}
 .carousel-control.right {margin-left:15px; background-image:none;}
+*/
+
+/* 1 by 1 */
+.carousel-inner .item.left.active {transform: translateX(-25%);}
+.carousel-inner .item.right.active {transform: translateX(25%);}
+.carousel-inner .item.next {transform: translateX(25%)}
+.carousel-inner .item.prev {transform: translateX(-25%)}
+.carousel-inner .item.right, .carousel-inner .item.left {transform: translateX(0);}
+.carousel-control.left, .carousel-control.right {background-image:none;}

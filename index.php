@@ -14,7 +14,7 @@
     <link rel="author" href="./inc/humans.txt" />
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/<?php echo $style; ?>.css">
-	<link rel="stylesheet" href="./css/loginscreen.css">
+	<link rel="stylesheet" href="./css/osloginscreen.css">
 <?php if ($transparency > 0) {include_once("css/css.php");} ?>
 <?php if ($displayribbon === TRUE): ?>
     <link rel="stylesheet" href="./css/gh-fork-ribbon.min.css" />
