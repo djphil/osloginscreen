@@ -2,11 +2,14 @@
 <style>
 @CHARSET "UTF-8";
 .informations,
+.registernow,
+.newsticker,
 .gridstatus, 
 .regionlist,
 .flashinfo,
 .eventlist,
 .userlist,
+.carousel,
 .logo
 {
     filter: alpha(opacity = <?php echo ($transparency * 100.0); ?>);

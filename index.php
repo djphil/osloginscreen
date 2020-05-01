@@ -54,7 +54,9 @@
 
         <?php if ($displaycaroussel): ?>
         <div class="col-sm-12">
-            <?php include_once("inc/carousel.php"); ?>
+            <div class="carousel">
+                <?php include_once("inc/carousel.php"); ?>
+            </div>
         </div>
         <?php endif; ?>
 
